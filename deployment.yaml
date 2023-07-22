@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: rsemihkoca/mik_backend:v0.1.0-beta
+          image: rsemihkoca/itumik_backend:v0.1.0-beta
           ports:
             - containerPort: 8008
           env:
