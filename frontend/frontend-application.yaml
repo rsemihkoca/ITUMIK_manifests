@@ -56,7 +56,7 @@ metadata:
   name: nodejs-app-ingress
   namespace: frontend
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: itu-mik-ip
+    kubernetes.io/ingress.global-static-ip-name: itu-mik-ip # External Static IP name in GCP
     networking.gke.io/managed-certificates: managed-cert
     kubernetes.io/ingress.class: "gce"
 
