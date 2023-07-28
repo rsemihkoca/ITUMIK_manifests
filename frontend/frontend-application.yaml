@@ -59,7 +59,7 @@ metadata:
   namespace: frontend
   annotations:
     kubernetes.io/ingress.global-static-ip-name: itu-mik-ip # External Static IP name in GCP Global or Regional
-    networking.gke.io/managed-certificates: managed-cert
+    networking.gke.io/managed-certificates: "managed-cert,www-managed-cert" # A level domain name and CNAME record must be created in the DNS zone.
     kubernetes.io/ingress.class: "gce"
 
 spec:
