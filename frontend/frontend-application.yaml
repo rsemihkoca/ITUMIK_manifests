@@ -35,6 +35,7 @@ metadata:
 spec:
   domains:
     - itu-mik.com
+    - www.itu-mik.com
 ---
 apiVersion: v1
 kind: Service
