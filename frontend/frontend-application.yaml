@@ -26,16 +26,16 @@ spec:
           ports:
             - containerPort: 3000
 
----
-apiVersion: networking.gke.io/v1
-kind: ManagedCertificate
-metadata:
-  name: managed-cert
-  namespace: frontend
-spec:
-  domains:
-    - itu-mik.com
-    - www.itu-mik.com
+#---
+#apiVersion: networking.gke.io/v1
+#kind: ManagedCertificate
+#metadata:
+#  name: managed-cert
+#  namespace: frontend
+#spec:
+#  domains:
+#    - itu-mik.com
+#    - www.itu-mik.com
 ---
 apiVersion: v1
 kind: Service
