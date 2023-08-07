@@ -64,6 +64,7 @@ spec:
       http:
         paths:
           - path: /?(.*)
+            pathType: Prefix
             backend:
               serviceName: nodejs-app-service
               servicePort: 80
@@ -75,6 +76,7 @@ spec:
       http:
         paths:
           - path: /?(.*)
+            pathType: Prefix
             backend:
               serviceName: nodejs-app-service
               servicePort: 80
