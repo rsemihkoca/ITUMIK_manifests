@@ -18,7 +18,7 @@ kind: Certificate
 metadata:
   name: itu-mik-com-tls
 spec:
-  secretName: itu-mik-com
+  secretName: itu-mik-com-tls
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer

@@ -58,7 +58,7 @@ spec:
     - hosts:
         - itu-mik.com
         - www.itu-mik.com
-      secretName: itu-mik-com
+      secretName: itu-mik-com-tls
   rules:
     - host: itu-mik.com
       http:
