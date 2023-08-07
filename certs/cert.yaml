@@ -1,0 +1,35 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: "test@test.com"
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: itu-mik-com-tls
+spec:
+  secretName: itu-mik-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: itu-mik.com
+  dnsNames:
+    - itu-mik.com
+    - www.itu-mik.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - itu-mik.com
+          - www.itu-mik.com
