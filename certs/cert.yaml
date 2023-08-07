@@ -46,10 +46,9 @@ spec:
   dnsNames:
     - itu-mik.com
     - www.itu-mik.com
-  acme:
-    config:
-      - http01:
-          ingressClass: nginx
-          domains:
-            - itu-mik.com
-            - www.itu-mik.com
+  solvers:
+    - http01:
+        ingressClass: nginx
+        domains:
+          - itu-mik.com
+          - www.itu-mik.com
