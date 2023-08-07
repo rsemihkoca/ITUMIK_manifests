@@ -26,14 +26,16 @@ spec:
           ports:
             - containerPort: 3000
 
-#---
-#apiVersion: networking.gke.io/v1
-#kind: ManagedCertificate
-#metadata:
-#  name: managed-cert
-#spec:
-#  domains:
-#    - itu-mik.com
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: managed-cert
+  namespace: frontend
+spec:
+  domains:
+    - itu-mik.com
+    - www.itu-mik.com
 ---
 apiVersion: v1
 kind: Service
@@ -57,8 +59,8 @@ metadata:
   name: nodejs-app-ingress
   namespace: frontend
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: itu-mik-ip # External Static IP name in GCP
-    networking.gke.io/managed-certificates: managed-cert
+    kubernetes.io/ingress.global-static-ip-name: itu-mik-ip # External Static IP name in GCP Global or Regional
+    networking.gke.io/managed-certificates: "managed-cert,www-managed-cert" # A level domain name and CNAME record must be created in the DNS zone.
     kubernetes.io/ingress.class: "gce"
 
 spec:
