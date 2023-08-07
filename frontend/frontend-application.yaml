@@ -66,8 +66,11 @@ spec:
           - path: /?(.*)
             pathType: Prefix
             backend:
-              serviceName: nodejs-app-service
-              servicePort: 80
+              service:
+                name: nodejs-app-service
+                port:
+                  number: 80
+
 #          - path: /api/?(.*)
 #            backend:
 #              serviceName: server-cluster-ip-service
@@ -78,8 +81,11 @@ spec:
           - path: /?(.*)
             pathType: Prefix
             backend:
-              serviceName: nodejs-app-service
-              servicePort: 80
+              service:
+                name: nodejs-app-service
+                port:
+                  number: 80
+
 #          - path: /api/?(.*)
 #            backend:
 #              serviceName: server-cluster-ip-service
