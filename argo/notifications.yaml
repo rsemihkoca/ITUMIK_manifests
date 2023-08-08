@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+  namespace: argocd-notifications
+data:
+  service.slack: |
+    url: SLACK_WEBHOOK_URL
+  trigger.on-status-changed: |
+    - when: app.status.operationState.phase in ['Error', 'Failed', 'Succeeded', 'Running']
+      send: [slack]
+
+#kubectl annotate app frontend-deployment argocd-notifications.argoproj.io/subscribe.on-status-changed=slack:#releases
