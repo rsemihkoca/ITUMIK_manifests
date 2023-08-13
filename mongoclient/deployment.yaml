@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: rsemihkoca/itumik_mongo:v0.1.2
+          image: rsemihkoca/itumik_mongo:v0.1.3
           ports:
             - containerPort: 8000
           env:
