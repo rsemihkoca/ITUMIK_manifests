@@ -5,6 +5,9 @@ metadata:
   namespace: backend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: d01-backend
   template:
     metadata:
       labels:
@@ -69,6 +72,9 @@ metadata:
   namespace: backend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: d07-backend
   template:
     metadata:
       labels:
@@ -133,6 +139,9 @@ metadata:
   namespace: backend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: d02-backend
   template:
     metadata:
       labels:
@@ -197,6 +206,9 @@ metadata:
   namespace: backend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: d08-backend
   template:
     metadata:
       labels:
@@ -261,6 +273,9 @@ metadata:
   namespace: backend
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: d13-backend
   template:
     metadata:
       labels:
