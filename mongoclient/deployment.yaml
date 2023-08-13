@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-backend
+  namespace: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-backend
+  template:
+    metadata:
+      labels:
+        app: mongo-backend
+    spec:
+      containers:
+        - name: backend
+          image: rsemihkoca/itumik_mongo:v0.1.0
+          ports:
+            - containerPort: 8000
+          env:
+          - name: CONNECTION_STRING
+            valueFrom:
+              secretKeyRef:
+                name: mongo-secrets
+                key: CONNECTION_STRING
