@@ -24,3 +24,17 @@ spec:
               secretKeyRef:
                 name: mongo-secrets
                 key: CONNECTION_STRING
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-backend-service
+  namespace: backend
+spec:
+  selector:
+    app: mongo-backend
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
