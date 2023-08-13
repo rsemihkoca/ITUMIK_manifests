@@ -1,92 +1,319 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
-  name: backend-deployment
+  name: d01-backend
   namespace: backend
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: backend
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: backend
+        app: d01-backend
     spec:
       containers:
         - name: backend
-          image: rsemihkoca/itumik_backend:v0.1.0-beta
+          image: rsemihkoca/itumik_backend:v0.1.0
           ports:
             - containerPort: 8008
           env:
-            - name: DB_COLLECTION_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: DB_COLLECTION_NAME
-            - name: DB_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: DB_NAME
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: DB_PASSWORD
-            - name: DB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: DB_USERNAME
-            - name: MQTT_CLEAN_SESSION
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: MQTT_CLEAN_SESSION
-            - name: MQTT_CLIENT_ID
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: MQTT_CLIENT_ID
-            - name: MQTT_CLUSTER_URL
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: MQTT_CLUSTER_URL
-            - name: MQTT_KEEPALIVE
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: MQTT_KEEPALIVE
-            - name: MQTT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: MQTT_PASSWORD
-            - name: MQTT_PORT
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: MQTT_PORT
-            - name: MQTT_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: backend-secret
-                  key: MQTT_USERNAME
+          - name: DB_COLLECTION_NAME
+            valueFrom:
+              secretKeyRef:
+                name: d01-secrets
+                key: DB_COLLECTION_NAME
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: d01-secrets
+                key: DB_NAME
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: d01-secrets
+                key: DB_PASSWORD
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: d01-secrets
+                key: DB_USERNAME
+          - name: MQTT_CLUSTER_URL
+            valueFrom:
+              secretKeyRef:
+                name: d01-secrets
+                key: MQTT_CLUSTER_URL
+          - name: MQTT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: d01-secrets
+                key: MQTT_PASSWORD
+          - name: MQTT_PORT
+            valueFrom:
+              secretKeyRef:
+                name: d01-secrets
+                key: MQTT_PORT
+          - name: MQTT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: d01-secrets
+                key: MQTT_USERNAME
+          - name: MQTT_TOPIC
+            valueFrom:
+              secretKeyRef:
+                name: d01-secrets
+                key: MQTT_TOPIC
 ---
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: backend-service
+  name: d07-backend
   namespace: backend
 spec:
-  selector:
-    app: backend
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8008
-  type: LoadBalancer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: d07-backend
+    spec:
+      containers:
+        - name: backend
+          image: rsemihkoca/itumik_backend:v0.1.0
+          ports:
+            - containerPort: 8008
+          env:
+          - name: DB_COLLECTION_NAME
+            valueFrom:
+              secretKeyRef:
+                name: d07-secrets
+                key: DB_COLLECTION_NAME
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: d07-secrets
+                key: DB_NAME
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: d07-secrets
+                key: DB_PASSWORD
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: d07-secrets
+                key: DB_USERNAME
+          - name: MQTT_CLUSTER_URL
+            valueFrom:
+              secretKeyRef:
+                name: d07-secrets
+                key: MQTT_CLUSTER_URL
+          - name: MQTT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: d07-secrets
+                key: MQTT_PASSWORD
+          - name: MQTT_PORT
+            valueFrom:
+              secretKeyRef:
+                name: d07-secrets
+                key: MQTT_PORT
+          - name: MQTT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: d07-secrets
+                key: MQTT_USERNAME
+          - name: MQTT_TOPIC
+            valueFrom:
+              secretKeyRef:
+                name: d07-secrets
+                key: MQTT_TOPIC
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: d02-backend
+  namespace: backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: d02-backend
+    spec:
+      containers:
+        - name: backend
+          image: rsemihkoca/itumik_backend:v0.1.0
+          ports:
+            - containerPort: 8008
+          env:
+          - name: DB_COLLECTION_NAME
+            valueFrom:
+              secretKeyRef:
+                name: d02-secrets
+                key: DB_COLLECTION_NAME
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: d02-secrets
+                key: DB_NAME
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: d02-secrets
+                key: DB_PASSWORD
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: d02-secrets
+                key: DB_USERNAME
+          - name: MQTT_CLUSTER_URL
+            valueFrom:
+              secretKeyRef:
+                name: d02-secrets
+                key: MQTT_CLUSTER_URL
+          - name: MQTT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: d02-secrets
+                key: MQTT_PASSWORD
+          - name: MQTT_PORT
+            valueFrom:
+              secretKeyRef:
+                name: d02-secrets
+                key: MQTT_PORT
+          - name: MQTT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: d02-secrets
+                key: MQTT_USERNAME
+          - name: MQTT_TOPIC
+            valueFrom:
+              secretKeyRef:
+                name: d02-secrets
+                key: MQTT_TOPIC
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: d08-backend
+  namespace: backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: d08-backend
+    spec:
+      containers:
+        - name: backend
+          image: rsemihkoca/itumik_backend:v0.1.0
+          ports:
+            - containerPort: 8008
+          env:
+          - name: DB_COLLECTION_NAME
+            valueFrom:
+              secretKeyRef:
+                name: d08-secrets
+                key: DB_COLLECTION_NAME
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: d08-secrets
+                key: DB_NAME
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: d08-secrets
+                key: DB_PASSWORD
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: d08-secrets
+                key: DB_USERNAME
+          - name: MQTT_CLUSTER_URL
+            valueFrom:
+              secretKeyRef:
+                name: d08-secrets
+                key: MQTT_CLUSTER_URL
+          - name: MQTT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: d08-secrets
+                key: MQTT_PASSWORD
+          - name: MQTT_PORT
+            valueFrom:
+              secretKeyRef:
+                name: d08-secrets
+                key: MQTT_PORT
+          - name: MQTT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: d08-secrets
+                key: MQTT_USERNAME
+          - name: MQTT_TOPIC
+            valueFrom:
+              secretKeyRef:
+                name: d08-secrets
+                key: MQTT_TOPIC
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: d13-backend
+  namespace: backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: d13-backend
+    spec:
+      containers:
+        - name: backend
+          image: rsemihkoca/itumik_backend:v0.1.0
+          ports:
+            - containerPort: 8008
+          env:
+          - name: DB_COLLECTION_NAME
+            valueFrom:
+              secretKeyRef:
+                name: d13-secrets
+                key: DB_COLLECTION_NAME
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: d13-secrets
+                key: DB_NAME
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: d13-secrets
+                key: DB_PASSWORD
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: d13-secrets
+                key: DB_USERNAME
+          - name: MQTT_CLUSTER_URL
+            valueFrom:
+              secretKeyRef:
+                name: d13-secrets
+                key: MQTT_CLUSTER_URL
+          - name: MQTT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: d13-secrets
+                key: MQTT_PASSWORD
+          - name: MQTT_PORT
+            valueFrom:
+              secretKeyRef:
+                name: d13-secrets
+                key: MQTT_PORT
+          - name: MQTT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: d13-secrets
+                key: MQTT_USERNAME
+          - name: MQTT_TOPIC
+            valueFrom:
+              secretKeyRef:
+                name: d13-secrets
+                key: MQTT_TOPIC
