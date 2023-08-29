@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: nodejs-app
-          image: rsemihkoca/itumik_frontend:v0.2.2
+          image: rsemihkoca/itumik_frontend:v0.2.3
           ports:
             - containerPort: 3000
 
